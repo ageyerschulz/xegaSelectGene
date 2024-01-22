@@ -22,6 +22,7 @@ Description: A collection of gene representation independent
              for function optimization, combinatorial optimization, and
              grammar-based genetic programming and grammatical evolution.
 License: MIT + file LICENSE
+URL: https://github.com/ageyerschulz/xegaSelectGene
 Encoding: UTF-8
 LazyData: false
 RoxygenNote: 7.2.3

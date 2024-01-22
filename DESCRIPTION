@@ -1,0 +1,39 @@
+Package: xegaSelectGene 
+Title: Selection of Genes and Gene Representation Independent Functions
+Version: 1.0.0.0
+Authors@R: 
+    person(given = "Andreas",
+           family = "Geyer-Schulz",
+           role = c("aut", "cre"),
+           email = "Andreas.Geyer-Schulz@kit.edu",
+    comment = c(ORCID = "0009-0000-5237-3579"))
+Description: A collection of gene representation independent 
+             mechanisms for evolutionary and genetic algorithms:
+             First, functions for selecting a gene 
+             in a population of genes according to its fitness value
+             and for adaptive scaling of the fitness as well as for 
+             performance optimization and measurement.
+             Second, variants of evaluation functions for 
+             deterministic and stochastic functions as well as 
+             for gene repair. 
+             Third, timing and counting functions for profiling the
+             algorithm pipeline. 
+             Fourth, a small collection of problem environments
+             for function optimization, combinatorial optimization, and
+             grammar-based genetic programming and grammatical evolution.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: false
+RoxygenNote: 7.2.3
+Suggests: testthat (>= 3.0.0)
+Collate:
+   'evalGene.R'
+   'scaling.R'
+   'selectGene.R'
+   'selectGeneBenchmark.R'
+   'timer.R'
+   'DeJongF4.R'
+   'Parabola2D.R'
+   'newXOR.R'
+   'newTSP.R'
+   'xegaSelectGene-package.R'

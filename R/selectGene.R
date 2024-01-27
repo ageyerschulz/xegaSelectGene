@@ -75,7 +75,7 @@ NewlFselectGenes<-function()
 #'
 #' @description \code{SelectPropFitOnln} implements selection
 #'              proportional to fitness. Negative fitness
-#'              vectors are shifted to $R^{+}$.
+#'              vectors are shifted to \eqn{R^+}.
 #'              The default of the function \code{lf$Offset} is \code{1}. 
 #'              Holland's schema theorem uses this selection function.
 #'              See John Holland (1975) for further information.
@@ -129,7 +129,7 @@ function(fit, lF, size=1)
 #'
 #' @description \code{SelectPropFit} implements selection
 #'              proportional to fitness. Negative fitness
-#'              vectors are shifted to $R^{+}$.
+#'              vectors are shifted to \eqn{R^+}.
 #'              The default of the function \code{lf$Offset} is \code{1}. 
 #'              Holland's schema theorem uses this selection function.
 #'              See John Holland (1975) for further information.
@@ -170,7 +170,7 @@ function(fit, lF, size=1)
 #'
 #' @description \code{SelectPropFitM} implements selection
 #'              proportional to fitness. Negative fitness
-#'              vectors are shifted to $R^{+}$.
+#'              vectors are shifted to \eqn{R^+}.
 #'              The default of the function \code{lf$Offset} is \code{1}. 
 #'              Holland's schema theorem uses this selection function.
 #'              See John Holland (1975) for further information.
@@ -208,7 +208,7 @@ function(fit, lF, size=1)
 #'
 #' @description \code{SelectPropFitDiffOnln} implements selection
 #'              proportional to fitness differences. Negative fitness
-#'              vectors are shifted to $R^{+}$.
+#'              vectors are shifted to \eqn{R^+}.
 #'              The default of the function \code{lf$Offset} is \code{1}. 
 #'              Holland's schema theorem uses this selection function.
 #'              See John Holland (1975) for further information.

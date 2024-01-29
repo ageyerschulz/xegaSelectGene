@@ -302,7 +302,7 @@ path<-c(1, 13, 2, 15, 9, 5, 7, 3, 12, 14, 10, 8, 6, 4, 11)
 #' @references 
 #' Lau, H. T. (1986):
 #' \emph{Combinatorial Heuristic Algorithms in FORTRAN}.
-#' Springer, 1986. p. 61.
+#' Springer, 1986. p. 61. <doi:10.1007/978-3-642-61649-5>
 #'
 #' @family Problem Environments
 #'

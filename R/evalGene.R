@@ -17,7 +17,7 @@
 #'              by the constant (functions) needed to configure them.
 #'
 #'@param  penv A problem environment.
-#'@return The local functions list \code{lF}
+#'@return The local configuration. A list of functions.
 #'
 #'@examples
 #' Parabola2D<-Parabola2DFactory()
@@ -89,8 +89,8 @@ ng$fit<-tryCatch(
 	lF$Max()*lF$penv$f(lF$DecodeGene(gene, lF), gene, lF),
 	error = function(e) 
 	         {if (ReportEvalErrors())
-                  {cat("EvalGeneU:\n")
-	          print(e, "\n")}
+                  {message("EvalGeneU:")
+                   message(conditionMessage(e))}
 	          NA})
 if (is.na(ng$fit)) # ignore and report!
 {  ng$fit<-lF$CWorstFitness()  
@@ -131,11 +131,13 @@ dg<-lF$DecodeGene(gene, lF)
 if (!is.null(names(dg)))
 {   p<-dg$parm; ng<-dg$gene }
 else { p<-dg }
+ReportEvalErrors<-lF$ReportEvalErrors
 ng$fit<-tryCatch(
 	lF$Max()*lF$penv$f(p, ng, lF),
 	error = function(e) 
-	         {cat("EvalGeneU:\n")
-	          print(e, "\n")
+	         {if (ReportEvalErrors())
+                  {message("EvalGeneU:")
+                   message(conditionMessage(e))}
 	          NA})
 if (is.na(ng$fit)) # ignore and report!
 {  ng$fit<-lF$CWorstFitness()  
@@ -284,17 +286,23 @@ testEvalGeneStoch<-function(gene, lF, rep)
 #'
 #' \itemize{
 #' \item "EvalGeneU": Evaluate gene (Default).
+#'                    Function \code{EvalGeneU}.
 #' \item "EvalGeneR": If the gene has been repaired by a decoder, 
 #'                    the gene is replaced by the repaired gene.
+#'                    Function \code{EvalGeneR}.
 #' \item "Deterministic": A gene which has been evaluated is 
 #'                        not reevaluated. 
+#'                    Function \code{EvalGeneDet}.
 #' \item "Stochastic": The fitness mean and 
 #'                     the fitness variance
 #'                     are incrementally updated.
 #'                     Genes remaining in the population over several
 #'                     generations, the fitness mean converges to the 
 #'                     expected mean.
+#'                    Function \code{EvalGeneStoch}.
 #' }            
+#'
+#' @return An evaluation function.
 #'
 #' @family Configuration
 #'
@@ -340,8 +348,8 @@ return(f)
 #'          -1 for a minimization problem.
 #' 
 #' @param gene       A gene (representation independent).
-#' @param lF         The local function factory provided by 
-#'                          the \code{xegaX} package.
+#' @param lF         The local configuration (a function factory provided by 
+#'                          the \code{xegaX} package).
 #'
 #' @return A gene.
 #'

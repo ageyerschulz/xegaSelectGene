@@ -32,10 +32,11 @@
 #' @references Wenstop, Fred (1980) 
 #'          Quantitative Analysis with Linguistic Variables.
 #'          Fuzzy Sets and Systems, 4(2), pp. 99-115.
+#'          <doi:10.1016/0165-0114(80)90031-7>
 #' 
 #' @param fit A fitness vector.
 #' @param k   Scaling exponent.
-#' @param lF  the local configuration.
+#' @param lF  Local configuration.
 #' 
 #' @return A scaled fitness vector.
 #'
@@ -60,7 +61,7 @@ ScaleFitness<-function(fit, k, lF)
 #'              set by the function \code{lF$ScalingExp}.
 #'
 #' @param fit  A fitness vector.
-#' @param lF   The local configuration.
+#' @param lF   Local configuration.
 #'
 #' @return Scaled fitness vector
 #'
@@ -128,9 +129,9 @@ ThresholdScaleFitness<-function(fit, lF)
 #' Dispersion Ratio Based Fitness Scaling. 
 #'
 #' @param fit A fitness vector.
-#' @param lF  The local configuration.
+#' @param lF  Local configuration.
 #'
-#' @return Scaled fitness vector
+#' @return Scaled fitness vector.
 #'
 #' @family Scaling
 #' @family Adaptive Parameter
@@ -151,16 +152,20 @@ ContinuousScaleFitness<-function(fit, lF)
 #' 
 #' @param method   A scaling method. Available methods are:
 #'        \itemize{ 
+#'         \item "NoScaling": Identity (Default).       
 #'         \item "ConstantScaling": \code{fit^k} with constant exponent.
+#'               Function \code{ConstantScaling}.
 #'         \item "ThresholdScaling": 
 #'         If the dispersion ratio is larger than \code{1+threshold}, 
 #'         use a constant scaling exponent with a value below 1 
 #'         (decrease of selection pressure).
+#'               Function \code{ThresholdScaling}.
 #'         \item If the dispersion ratio is lower than \code{1-threshold}, 
 #'         use a constant scaling exponent with a value above 1
 #'         (increase of selection pressure).
 #'         \item "ContinuousScaling": Use weighted dispersion ratio 
 #'         as scaling exponent.
+#'         Function \code{ContinuousScaling}.
 #'         }
 #'
 #' @return A scaling function. 
@@ -205,9 +210,9 @@ return(f)
 #'
 #' @param popStat   Population statistics.
 #' @param DM        Dispersion function. 
-#' @param lF        The local configuration.
+#' @param lF        Local configuration.
 #'
-#' @return Dispersion ratio 
+#' @return Dispersion ratio. 
 #'
 #' @family Scaling
 #'
@@ -291,4 +296,4 @@ if (!exists("f", inherits=FALSE))
 return(f)
 }
 
-cat("Loaded scaling of selectGene Package.\n")
+# end of file

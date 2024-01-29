@@ -19,12 +19,15 @@
 #'              of the selection function
 #'              given a fitness function.
 #' 
-#' @param fit    A vector with fitness values.
-#' @param method A string specifying the selection function. 
-#'                      See \code{SelectGeneFactory}.
-#' @param howOften An integer. 
-#' @param lF       The local functions. 
+#' @param fit             Fitness vector.
+#' @param method          String specifying the selection function. 
+#'                        See \code{SelectGeneFactory}.
+#' @param howOften        Integer. 
+#' @param lF              Local configuration. 
 #' @param continuation    Convert to index function? 
+#' @param verbose         Boolean. Default: \code{FALSE}. 
+#'                        If \code{TRUE}, the exection time of the transformation of the selection function
+#'                        into a quasi-continuation function is printed on the console. 
 #'
 #' @return 
 #' \itemize{
@@ -47,7 +50,7 @@
 testSelectGene<-function(fit, 
 			 method="Uniform", 
 			 howOften=100,
-			 lF=NewlFselectGenes(), continuation=TRUE) 
+			 lF=NewlFselectGenes(), continuation=TRUE, verbose=FALSE) 
 {
 SelectGene<-SelectGeneFactory(method=method)
 v<-rep(0,howOften)
@@ -62,7 +65,7 @@ if (continuation)
 selectTimer()
 	SelectGene<-TransformSelect(fit, lF, SelectGene)
 selectTimer()
-cat("TransformSelect:", selectTimer("TimeUsed"), "\n")
+if (verbose) cat("TransformSelect:", selectTimer("TimeUsed"), "\n")
 }
 
 selectTimer()
@@ -92,9 +95,12 @@ return(list(fit=fit,
 #' @description Times a selection function 
 #'              for populations of size 10 to \eqn{10^{limit}}.
 #'
-#' @param method    Selection function. Default: Uniform.
-#' @param continuation  Convert to index function? Default: TRUE.
-#' @param limit     A vector of population sizes.
+#' @param method          Selection function. Default: Uniform.
+#' @param continuation    Convert to index function? Default: TRUE.
+#' @param limit           Vector of population sizes.
+#' @param verbose         Boolean. Default: \code{FALSE}. 
+#'                        If \code{TRUE}, the function benchmarked and the population size 
+#'                        are printed to the console.
 #'
 #' @return Vector of execution times in seconds.
 #'
@@ -104,13 +110,13 @@ return(list(fit=fit,
 #' selectBenchmark(method="SUS", continuation=TRUE, limit=c(5000, 10000, 15000))
 #' selectBenchmark(method="SUS", continuation=FALSE, limit=seq(from=100, to=1000, length.out=5))
 #' @export
-selectBenchmark<-function(method="Uniform", continuation=TRUE, limit=c(10, 100, 1000))
+selectBenchmark<-function(method="Uniform", continuation=TRUE, limit=c(10, 100, 1000), verbose=FALSE)
 {
 	result<-vector("double", length(limit))
 	for (i in (1:length(limit)))
 	{     
 		size<-limit[i]
-		cat(method,"Selecting n=",size, "candidates\n")
+		if (verbose) cat(method,"Selecting n=",size, "candidates\n")
 		fit<-sample(1000, size, replace=TRUE)  
 		a<-try(testSelectGene(fit, 
 				      method=method, 
@@ -140,11 +146,14 @@ selectBenchmark<-function(method="Uniform", continuation=TRUE, limit=c(10, 100, 
 #'              \item "SUS" benchmarks \code{SelectSUS}.
 #'              }
 #'
-#' @param limit  Vector of population sizes.
-#' @param both   For \code{both=TRUE} the selection function 
-#'        is benchmarked with and without transformation. 
-#'        For \code{both=FALSE}, only the transformed selection functions
-#'        are benchmarked.
+#' @param limit      Vector of population sizes.
+#' @param both       For \code{both=TRUE} the selection function 
+#'                   is benchmarked with and without transformation. 
+#'                   For \code{both=FALSE}, only the transformed selection functions
+#'                   are benchmarked.
+#' @param verbose         Boolean. Default: \code{FALSE}. 
+#'                        If \code{TRUE}, the function benchmarked and the population size 
+#'                        are printed to the console.
 #' 
 #' @section Warning:
 #'    The time to run the function for \code{lim>6} explodes 
@@ -159,16 +168,15 @@ selectBenchmark<-function(method="Uniform", continuation=TRUE, limit=c(10, 100, 
 #' runOneBenchmark("Duel", 5, both=FALSE)
 #' runOneBenchmark("PropFitDiffOnln")
 #' @export
-runOneBenchmark<-function(name, limit=c(10, 100, 1000), both=TRUE)
+runOneBenchmark<-function(name, limit=c(10, 100, 1000), both=TRUE, verbose=FALSE)
 {
 d<-data.frame()
 n<-data.frame()
-cat(name, "\n")
 n<-rbind(n, paste(name," C"))
-d<-rbind(d, selectBenchmark(method=name, continuation=TRUE, limit=limit))
+d<-rbind(d, selectBenchmark(method=name, continuation=TRUE, limit=limit, verbose=verbose))
 if (both)
 { n<-rbind(n, name)
-d<-rbind(d, selectBenchmark(method=name, continuation=FALSE, limit=limit))}
+d<-rbind(d, selectBenchmark(method=name, continuation=FALSE, limit=limit, verbose=verbose))}
 df<-cbind(n,d)
 names(df)<-c("Benchmark", unlist(lapply(limit, toString)))
 return(df)
@@ -178,38 +186,52 @@ return(df)
 #'
 #'
 #'
-#' @param lim  Vector of population sizes. 
-#' @param both For \code{both=TRUE} the selection function 
-#'        is benchmarked with and without transformation. 
-#'        For \code{both=FALSE}, only the transformed selection functions
-#'        are benchmarked.
+#' @param lim      Vector of population sizes. 
+#' @param both     For \code{both=TRUE} the selection function 
+#'                 is benchmarked with and without transformation. 
+#'                 For \code{both=FALSE}, only the transformed selection functions
+#'                 are benchmarked.
+#' @param verbose         Boolean. Default: \code{FALSE}. 
+#'                        If \code{TRUE}, the function benchmarked and the population size 
+#'                        are printed to the console.
+#' 
 #'
 #' @return A data frame sorted in ascending order of the time of
-#          the last column. 
+#'         the last column. 
 #'         The fastest selection methods come first.
-#'  
+#'         The first row contains the population sizes with which 
+#'         the benchmark has been performed.
+#'         The data frame has \code{1+length(lim)} columns:
+#'         \itemize{
+#'         \item "Benchmark": The name of the benchmarked selection 
+#'                            function. A "C" after the name indicates
+#'                            that the selection function has been 
+#'                            transformed into a lookup function.
+#'         \item \code{length(lim)} columns with the execution times in seconds.
+#'         }
+#'
 #' @family Benchmark Selection Functions
 #'
 #' @examples
-#' runSelectBenchmarks(lim=c(10, 100), both=TRUE)
+#' runSelectBenchmarks(lim=c(10, 100), both=TRUE, verbose=TRUE)
 #' runSelectBenchmarks(lim=c(10, 100), both=FALSE)
 #' @export
-runSelectBenchmarks<-function(lim=c(10, 100), both=TRUE)
+runSelectBenchmarks<-function(lim=c(10, 100), both=TRUE, verbose=FALSE)
 {
 df<-data.frame()
-try(df<-rbind(df,runOneBenchmark("Uniform", lim, both)))
-try(df<-rbind(df,runOneBenchmark("Proportional", lim, both)))
-try(df<-rbind(df,runOneBenchmark("ProportionalOnln", lim, both)))
-try(df<-rbind(df,runOneBenchmark("ProportionalM", lim, both)))
-try(df<-rbind(df,runOneBenchmark("PropFitDiffOnln", lim, both)))
-try(df<-rbind(df,runOneBenchmark("PropFitDiff", lim, both)))
-try(df<-rbind(df,runOneBenchmark("PropFitDiffM", lim, both)))
-try(df<-rbind(df,runOneBenchmark("SUS", lim, both)))
-try(df<-rbind(df,runOneBenchmark("LRTSR", lim, both)))
-try(df<-rbind(df,runOneBenchmark("LRSelective", lim, both)))
-try(df<-rbind(df,runOneBenchmark("Duel", lim, both)))
-try(df<-rbind(df,runOneBenchmark("Tournament", lim, both)))
-try(df<-rbind(df,runOneBenchmark("STournament", lim, both)))
+try(df<-rbind(df,runOneBenchmark("Uniform", lim, both, verbose)))
+try(df<-rbind(df,runOneBenchmark("Proportional", lim, both, verbose)))
+try(df<-rbind(df,runOneBenchmark("ProportionalOnln", lim, both, verbose)))
+try(df<-rbind(df,runOneBenchmark("ProportionalM", lim, both, verbose)))
+try(df<-rbind(df,runOneBenchmark("PropFitDiffOnln", lim, both, verbose)))
+try(df<-rbind(df,runOneBenchmark("PropFitDiff", lim, both, verbose)))
+try(df<-rbind(df,runOneBenchmark("PropFitDiffM", lim, both, verbose)))
+try(df<-rbind(df,runOneBenchmark("SUS", lim, both, verbose)))
+try(df<-rbind(df,runOneBenchmark("LRTSR", lim, both, verbose)))
+try(df<-rbind(df,runOneBenchmark("LRSelective", lim, both, verbose)))
+try(df<-rbind(df,runOneBenchmark("Duel", lim, both, verbose)))
+try(df<-rbind(df,runOneBenchmark("Tournament", lim, both, verbose)))
+try(df<-rbind(df,runOneBenchmark("STournament", lim, both, verbose)))
 # record with vector of  population sizes (independent variable)
 n<-data.frame()
 n<-rbind(n, "popsize")
@@ -273,4 +295,4 @@ predictSelectTime<-function(df, method="Uniform", popsize=100000)
  return(list(model=model, predicted=pred))
 }	
 
-cat("Loaded selectGeneBenchmark, selectGene Package.\n")
+# end of file

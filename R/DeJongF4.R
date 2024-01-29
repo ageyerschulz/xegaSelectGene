@@ -12,6 +12,7 @@
 #' @references De Jong, Kenneth A. (1975):
 #' \emph{An Analysis of the Behavior of a Class of Genetic Adaptive Systems.}
 #' PhD thesis, Michigan, Ann Arbor, pp. 203-206.
+#' <https://deepblue.lib.umich.edu/handle/2027.42/4507>
 #'
 #' @inherit DelayedPFactory return
 #' 

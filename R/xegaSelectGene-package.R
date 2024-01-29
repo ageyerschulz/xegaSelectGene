@@ -44,7 +44,7 @@
 #'
 #'              \itemize{
 #'              \item \code{fit}  A fitness vector. 
-#'              \item \code{lF}    The local configuration.
+#'              \item \code{lF}   Local configuration.
 #'              }
 #'
 #'              \strong{Return Value}

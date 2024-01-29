@@ -25,7 +25,12 @@
 #'         \item \code{$ub()}: The vector of upper bounds of the parameters.
 #'         \item \code{$f(parm, gene=0, lF=0)}): The fitness function. 
 #'         }
-#'         Additional elements (e.g. description, solution) may be present.
+#'         Additional elements:
+#'         \itemize{
+#'         \item \code{$describe()}: Print a description of the problem environment to the console.
+#'         \item \code{$solution()}: The solution structure. A named list with \code{minimum}, \code{maximum} and
+#'                                   2 lists of equivalent solutions: \code{minpoints}, \code{maxpoints}. 
+#'         }
 #'
 #' @family Problem Environments
 #' @seealso Parabola2D

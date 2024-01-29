@@ -44,7 +44,7 @@ parm<-function(x){function() {return(x)}}
 #'              selection functions, this must be extended
 #'              by the constant (functions) needed to configure them.
 #'
-#'@return The local functions \code{lF}.
+#'@return Local configuration \code{lF}.
 #'
 #'@examples
 #' lF<-NewlFselectGenes()
@@ -91,6 +91,7 @@ NewlFselectGenes<-function()
 #' @references  Holland, John (1975): 
 #'              \emph{Adaptation in Natural and Artificial Systems},  
 #'              The University of Michigan Press, Ann Arbor.
+#'              <ISBN:0-472-08460-7>
 #'
 #' @param fit     Fitness vector.
 #' @param lF      Local configuration.
@@ -140,6 +141,7 @@ function(fit, lF, size=1)
 #' @references  Holland, John (1975): 
 #'              \emph{Adaptation in Natural and Artificial Systems},  
 #'              The University of Michigan Press, Ann Arbor.
+#'              <ISBN:0-472-08460-7>
 #'
 #' @param fit   Fitness vector.
 #' @param lF    Local configuration.
@@ -183,6 +185,7 @@ function(fit, lF, size=1)
 #' @references  Holland, John (1975): 
 #'              \emph{Adaptation in Natural and Artificial Systems},  
 #'              The University of Michigan Press, Ann Arbor.
+#'              <ISBN:0-472-08460-7>
 #'
 #' @param fit   Fitness vector.
 #' @param lF    Local configuration.
@@ -228,6 +231,7 @@ function(fit, lF, size=1)
 #' @references  Holland, John (1975): 
 #'              \emph{Adaptation in Natural and Artificial Systems},  
 #'              The University of Michigan Press, Ann Arbor.
+#'              <ISBN:0-472-08460-7>
 #'
 #' @param fit    Fitness vector.
 #' @param lF     Local configuration.
@@ -275,9 +279,10 @@ function(fit, lF, size=1)
 #'              to \code{0.01} per default.
 #'              See equation (7.45) Andreas Geyer-Schulz (1997), p. 205.
 #'
-#' @references   Andreas Geyer-Schulz (1997):
+#' @references   Geyer-Schulz, Andreas (1997):
 #'      \emph{Fuzzy Rule-Based Expert Systems and Genetic Machine Learning},
-#'               Physica, Heidelberg.
+#'      Physica, Heidelberg.
+#'      <978-3-7908-0830-X>
 #'
 #' @section Note: 
 #'        \code{SelectPopFitDiff} is a dynamic scaling function.
@@ -326,7 +331,8 @@ function(fit, lF, size=1)
 #'
 #' @references   Andreas Geyer-Schulz (1997):
 #'          \emph{Fuzzy Rule-Based Expert Systems and Genetic Machine Learning},
-#'               Physica, Heidelberg.
+#'                Physica, Heidelberg.
+#'           <978-3-7908-0830-X>
 #'
 #' @section Note: 
 #'        \code{SelectPopFitDiff} is a dynamic scaling function.
@@ -415,6 +421,7 @@ function(fit, lF, size=1)
 #' The Differential Evolution Algorithm (Chapter 2), pp. 37-134. 
 #' In: Differential Evolution. A Practical Approach to Global Optimization.
 #' Springer, Berlin.
+#' <doi:10.1007/3-540-31306-0>
 #'
 #' @examples
 #' fit<-sample(10, 15, replace=TRUE)
@@ -592,6 +599,7 @@ return(index)
 #'      In Grefenstette, John J.(Ed.) 
 #'      \emph{Proceedings of the Second International 
 #'      Conference on Genetic Algorithms on Genetic Algorithms}, pp. 14-21.
+#'      <ISBN:978-08058-0158-8>
 #'
 #' @param fit   Fitness vector.
 #' @param lF    Local configuration.
@@ -637,6 +645,7 @@ return(index[sample(length(index), size=size, replace=(size>length(fit)))]) }
 #'      In Schaffer, J. David (Ed.) 
 #'      \emph{Proceedings of the Third International 
 #'      Conference on Genetic Algorithms on Genetic Algorithms}, pp. 116-121.
+#'      <ISBN:1-55860-066-3>
 #'
 #' @param fit    Fitness vector.
 #' @param lF     Local configuration.
@@ -674,11 +683,12 @@ return(f$ix[as.integer(i)])
 #'               
 #'          TODO: More efficient implementation. We use two sorts!
 #'
-#' @references John J. Grefenstette, James E. Baker (1989):
+#' @references Grefenstette, John J. and Baker, James E. (1989):
 #'      How Genetic Algorithms Work: A Critical Look at Implicit Parallelism
 #'      In Schaffer, J. David (Ed.) 
 #'      \emph{Proceedings of the Third International 
 #'      Conference on Genetic Algorithms on Genetic Algorithms}, pp. 20-27.
+#'      <ISBN:1-55860-066-3>
 #'
 #' @param fit    Fitness vector.
 #' @param lF     Local configuration.
@@ -756,7 +766,7 @@ return(SelectSUS(ftsr, lF, size))
 #' @references Reynolds, J. C. (1993):
 #'             The discoveries of continuations.
 #'             \emph{LISP and Symbolic Computation} 6, 233-247. 
-#'             doi: 10.1007/BF01019459
+#'             <doi: 10.1007/BF01019459>
 #'
 #' @param fit          Fitness vector.
 #' @param lF           Local configuration.
@@ -866,4 +876,4 @@ if (!exists("f", inherits=FALSE))
 return(f)
 }
 
-cat("Loaded selectGene Package.\n")
+# end of file

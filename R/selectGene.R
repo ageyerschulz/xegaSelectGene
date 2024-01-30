@@ -282,7 +282,7 @@ function(fit, lF, size=1)
 #' @references   Geyer-Schulz, Andreas (1997):
 #'      \emph{Fuzzy Rule-Based Expert Systems and Genetic Machine Learning},
 #'      Physica, Heidelberg.
-#'      <978-3-7908-0830-X>
+#'      (ISBN:978-3-7908-0830-X)
 #'
 #' @section Note: 
 #'        \code{SelectPopFitDiff} is a dynamic scaling function.

@@ -91,7 +91,7 @@ NewlFselectGenes<-function()
 #' @references  Holland, John (1975): 
 #'              \emph{Adaptation in Natural and Artificial Systems},  
 #'              The University of Michigan Press, Ann Arbor.
-#'              <ISBN:0-472-08460-7>
+#'              (ISBN:0-472-08460-7)
 #'
 #' @param fit     Fitness vector.
 #' @param lF      Local configuration.
@@ -141,7 +141,7 @@ function(fit, lF, size=1)
 #' @references  Holland, John (1975): 
 #'              \emph{Adaptation in Natural and Artificial Systems},  
 #'              The University of Michigan Press, Ann Arbor.
-#'              <ISBN:0-472-08460-7>
+#'              (ISBN:0-472-08460-7)
 #'
 #' @param fit   Fitness vector.
 #' @param lF    Local configuration.
@@ -185,7 +185,7 @@ function(fit, lF, size=1)
 #' @references  Holland, John (1975): 
 #'              \emph{Adaptation in Natural and Artificial Systems},  
 #'              The University of Michigan Press, Ann Arbor.
-#'              <ISBN:0-472-08460-7>
+#'              (ISBN:0-472-08460-7)
 #'
 #' @param fit   Fitness vector.
 #' @param lF    Local configuration.
@@ -231,7 +231,7 @@ function(fit, lF, size=1)
 #' @references  Holland, John (1975): 
 #'              \emph{Adaptation in Natural and Artificial Systems},  
 #'              The University of Michigan Press, Ann Arbor.
-#'              <ISBN:0-472-08460-7>
+#'              (ISBN:0-472-08460-7)
 #'
 #' @param fit    Fitness vector.
 #' @param lF     Local configuration.
@@ -599,7 +599,7 @@ return(index)
 #'      In Grefenstette, John J.(Ed.) 
 #'      \emph{Proceedings of the Second International 
 #'      Conference on Genetic Algorithms on Genetic Algorithms}, pp. 14-21.
-#'      <ISBN:978-08058-0158-8>
+#'      (ISBN:978-08058-0158-8)
 #'
 #' @param fit   Fitness vector.
 #' @param lF    Local configuration.
@@ -645,7 +645,7 @@ return(index[sample(length(index), size=size, replace=(size>length(fit)))]) }
 #'      In Schaffer, J. David (Ed.) 
 #'      \emph{Proceedings of the Third International 
 #'      Conference on Genetic Algorithms on Genetic Algorithms}, pp. 116-121.
-#'      <ISBN:1-55860-066-3>
+#'      (ISBN:1-55860-066-3)
 #'
 #' @param fit    Fitness vector.
 #' @param lF     Local configuration.
@@ -688,7 +688,7 @@ return(f$ix[as.integer(i)])
 #'      In Schaffer, J. David (Ed.) 
 #'      \emph{Proceedings of the Third International 
 #'      Conference on Genetic Algorithms on Genetic Algorithms}, pp. 20-27.
-#'      <ISBN:1-55860-066-3>
+#'      (ISBN:1-55860-066-3)
 #'
 #' @param fit    Fitness vector.
 #' @param lF     Local configuration.
@@ -766,7 +766,7 @@ return(SelectSUS(ftsr, lF, size))
 #' @references Reynolds, J. C. (1993):
 #'             The discoveries of continuations.
 #'             \emph{LISP and Symbolic Computation} 6, 233-247. 
-#'             <doi: 10.1007/BF01019459>
+#'             <doi:10.1007/BF01019459>
 #'
 #' @param fit          Fitness vector.
 #' @param lF           Local configuration.

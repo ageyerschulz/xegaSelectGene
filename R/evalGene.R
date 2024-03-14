@@ -136,7 +136,7 @@ ng$fit<-tryCatch(
 	lF$Max()*lF$penv$f(p, ng, lF),
 	error = function(e) 
 	         {if (ReportEvalErrors())
-                  {message("EvalGeneU:")
+                  {message("EvalGeneR:")
                    message(conditionMessage(e))}
 	          NA})
 if (is.na(ng$fit)) # ignore and report!

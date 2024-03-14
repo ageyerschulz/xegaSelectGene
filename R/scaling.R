@@ -105,8 +105,8 @@ ScalingFitness<-function(fit, lF)
 #' lF$Offset<-parm(0.0001)
 #' lF$ScalingThreshold<-parm(0.05)
 #' lF$RDM<-parm(1.0)
-#' lF$ScalingExp<-parm(0.5)
-#' lF$ScalingExp2<-parm(2)
+#' lF$ScalingExp<-parm(2.0)
+#' lF$ScalingExp2<-parm(0.5)
 #' fit<-sample(10, 20, replace=TRUE)
 #' fit
 #' ThresholdScaleFitness(fit, lF)
@@ -118,10 +118,10 @@ ScalingFitness<-function(fit, lF)
 ThresholdScaleFitness<-function(fit, lF) 
  { 
 	 if (lF$RDM()>1+lF$ScalingThreshold())
-      # decrease pressure
+      # increase pressure
       {return(ScaleFitness(fit, lF$ScalingExp(), lF))}
 	 if (lF$RDM()<1-lF$ScalingThreshold())
-      # increase pressure
+      # decrease pressure
       {return(ScaleFitness(fit, lF$ScalingExp2(), lF))}
       return(fit)
 }

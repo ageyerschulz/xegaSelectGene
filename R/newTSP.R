@@ -8,10 +8,10 @@
 
 #' Generate a TSP problem environment
 #'
-#' @description \code{newTSP} generates the problem environment 
+#' @description \code{newTSP()} generates the problem environment 
 #'              for a traveling salesman problem (TSP).
 #'
-#' @details \code{newTSP} provides several local permutation 
+#' @details \code{newTSP()} provides several local permutation 
 #'        improvement heuristics: 
 #'        a greedy path of length k starting
 #'        from city i, 

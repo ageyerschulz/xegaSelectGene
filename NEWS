@@ -7,3 +7,20 @@ Version 1.0.0.1 (2024-03-14)
 - EvalGeneR:
         Message text corrected.
 
+Version 1.0.0.2 (2024-03-15)
+
+- () added to all function names in documentation.
+  and links to all xega packages.
+
+- ScaleFitness: 
+        Documentation corrected.
+- ThresholdScaleFitness:
+        Documentation extended.
+- ContinuousScaleFitness: 
+        Documentation corrected.
+- ScalingFactory: 
+        Documentation completed.
+- SelectGeneFactory: 
+        Documentation corrected.
+- SelectPropFitDiff and SelectPropFitDiffOnln:
+        Epsilon added for guarantee numerical stability.

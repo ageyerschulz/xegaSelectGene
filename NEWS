@@ -24,3 +24,4 @@ Version 1.0.0.2 (2024-03-15)
         Documentation corrected.
 - SelectPropFitDiff and SelectPropFitDiffOnln:
         Epsilon added for guarantee numerical stability.
+

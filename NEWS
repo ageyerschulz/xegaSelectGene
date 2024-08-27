@@ -25,3 +25,12 @@ Version 1.0.0.2 (2024-03-15)
 - SelectPropFitDiff and SelectPropFitDiffOnln:
         Epsilon added for guarantee numerical stability.
 
+Version 1.0.0.3 (2024-08-27)
+
+- newTSP:
+       In constructed problem environment 
+       functions $max() and $globalOptimum() added.
+       Rationale: Compatibility with other problem environments 
+                  for use in xegaEnvMeta experiments with TSPs.
+
+

@@ -1,6 +1,6 @@
 Package: xegaSelectGene 
 Title: Selection of Genes and Gene Representation Independent Functions
-Version: 1.0.0.2
+Version: 1.0.0.3
 Authors@R: 
     person(given = "Andreas",
            family = "Geyer-Schulz",

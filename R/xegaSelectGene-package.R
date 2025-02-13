@@ -347,4 +347,4 @@
 #' @section License: MIT
 #' @section URL: <https://github.com/ageyerschulz/xegaSelectGene>
 #' @section Installation: From CRAN by \code{install.packages('xegaSelectGene')}
-NULL
+"_PACKAGE"

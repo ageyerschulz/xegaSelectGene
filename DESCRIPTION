@@ -47,10 +47,10 @@ Description: This collection of gene representation-independent
              Whitley, Darrell (1989, ISBN:1-55860-066-3),
              Wickham, Hadley (2019, ISBN:978-815384571).
 License: MIT + file LICENSE
-URL: <https://github.com/ageyerschulz/xegaSelectGene>
+URL: https://github.com/ageyerschulz/xegaSelectGene
 Encoding: UTF-8
 LazyData: false
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Suggests: testthat (>= 3.0.0)
 Collate:
    'evalGene.R'

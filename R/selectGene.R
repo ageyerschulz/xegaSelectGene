@@ -59,7 +59,8 @@ NewlFselectGenes<-function()
 	 MaxTSR = parm(1.9),
 	 DRmax = parm(2.0),
 	 DRmin = parm(0.5),
-         ScalingDelay = parm(1)
+         ScalingDelay = parm(1),
+         TopK = parm(2)
 	 ##
          )
 }
@@ -492,15 +493,15 @@ return(c(i1, i2))
 #' @param fit    Fitness vector.
 #' @param lF     Local configuration.
 #'
-#' @return Index of the best candidate.
+#' @return The index vector of the best candidates in \code{size} tournaments.
 #'
 #' @examples
 #' fit<-sample(10, 15, replace=TRUE)
 #' Tournament(fit, NewlFselectGenes()) 
 #' @export
 Tournament<-function(fit, lF)
-{ cand<-sample(length(fit), size=lF$TournamentSize())
- (cand[max(fit[cand])==fit[cand]])[1] }
+      {cand<-sample(length(fit), size=lF$TournamentSize())
+      (cand[max(fit[cand])==fit[cand]])[1] }
 
 #' Stochastic tournament of size \code{k}.
 #' 
@@ -515,14 +516,17 @@ Tournament<-function(fit, lF)
 #' @param fit    Fitness vector.
 #' @param lF     Local configuration.
 #'
+#' @return The index vector of the best candidates in \code{size} tournaments.
+#'
 #' @return Index of candidate.
 #'
 #' @examples
 #' fit<-sample(10, 15, replace=TRUE)
+#' fit
 #' STournament(fit, NewlFselectGenes()) 
 #' @export
 STournament<-function(fit, lF)
-{ cand<-sample(length(fit), size=lF$TournamentSize())
+  {cand<-sample(length(fit), size=lF$TournamentSize())
   cand[SelectPropFit(fit[cand], lF)]}
 
 #' Tournament selection. 
@@ -696,12 +700,13 @@ return(f$ix[as.integer(i)])
 #' fit
 #' SelectTopK(fit, NewlFselectGenes()) 
 #' SelectTopK(fit, NewlFselectGenes(), size=3) 
-#' SelectTopK((-1)*fit, NewlFselectGenes(), size=3) 
+#' SelectTopK((-1)*fit, NewlFselectGenes(), size=length(fit)) 
 #' @importFrom stats runif
 #' @export
 SelectTopK<- function(fit, lF, size=1) {
 f<-sort(fit, decreasing=TRUE, index.return=TRUE)
-return(f$ix[1:min(size,length(fit))])
+b<-(f$ix[1:min(lF$TopK(),length(fit))])
+rep(b, ceiling(size/length(b)))[1:size]
 }
 
 #' Linear rank selection with interpolated target sampling rates.

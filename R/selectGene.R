@@ -675,6 +675,35 @@ f<-sort(fit, decreasing=TRUE, index.return=TRUE)
 return(f$ix[as.integer(i)])
 }
 
+#' The best k genes are selected.
+#'
+#' @description \code{SelectTopK} implements the selection
+#'      of the top K genes.
+#'               
+#' @details For implementing migration in island models 
+#'          and  best differential evolution operators.
+#'               
+#' @param fit    Fitness vector.
+#' @param lF     Local configuration.
+#' @param size   Size of return vector (default: 1).
+#'
+#' @return The index vector of selected genes.
+#'
+#' @family Selection Functions
+#'
+#' @examples
+#' fit<-sample(10, 15, replace=TRUE)
+#' fit
+#' SelectTopK(fit, NewlFselectGenes()) 
+#' SelectTopK(fit, NewlFselectGenes(), size=3) 
+#' SelectTopK((-1)*fit, NewlFselectGenes(), size=3) 
+#' @importFrom stats runif
+#' @export
+SelectTopK<- function(fit, lF, size=1) {
+f<-sort(fit, decreasing=TRUE, index.return=TRUE)
+return(f$ix[1:min(size,length(fit))])
+}
+
 #' Linear rank selection with interpolated target sampling rates.
 #'
 #' @description \code{SelectLinearRankTSR()} implements selection
@@ -832,6 +861,7 @@ TransformSelect<-function(fit, lF, SelectFUN)
 #'              \item "LRSelective" returns \code{SelectLRSelective()}.
 #'              \item "LRTSR" returns \code{SelectLinearRankTSR()}.
 #'              \item "SUS" returns \code{SelectSUS()}.
+#'              \item "TopK" returns \code{SelectTopK()}.
 #'              }
 #'
 #' @details
@@ -879,6 +909,7 @@ if (method=="STournament") {f<- SelectSTournament}
 if (method=="LRSelective") {f<- SelectLRSelective}
 if (method=="LRTSR") {f<- SelectLinearRankTSR}
 if (method=="SUS") {f<- SelectSUS}
+if (method=="TopK") {f<- SelectTopK}
 if (!exists("f", inherits=FALSE)) 
 	{stop("Selection label ", method, " does not exist")}
 return(f)

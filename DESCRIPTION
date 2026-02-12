@@ -1,6 +1,6 @@
 Package: xegaSelectGene 
 Title: Selection of Genes and Gene Representation Independent Functions
-Version: 1.0.0.3
+Version: 1.0.0.4
 Authors@R: 
     person(given = "Andreas",
            family = "Geyer-Schulz",
@@ -50,7 +50,7 @@ License: MIT + file LICENSE
 URL: https://github.com/ageyerschulz/xegaSelectGene
 Encoding: UTF-8
 LazyData: false
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Suggests: testthat (>= 3.0.0)
 Collate:
    'evalGene.R'

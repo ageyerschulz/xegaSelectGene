@@ -8,8 +8,9 @@ Authors@R:
            email = "Andreas.Geyer-Schulz@kit.edu",
     comment = c(ORCID = "0009-0000-5237-3579"))
 Description: This collection of gene representation-independent 
-             mechanisms for evolutionary and genetic algorithms contains
-             four groups of functions:
+             mechanisms for evolutionary and genetic algorithms
+             for the R-package xega <https://CRAN.R-project.org/package=xega> 
+             contains four groups of functions:
              First, functions for selecting a gene 
              in a population of genes according to its fitness value
              and for adaptive scaling of the fitness values as well as for 
@@ -28,6 +29,8 @@ Description: This collection of gene representation-independent
              for function optimization, combinatorial optimization, and
              grammar-based genetic programming and grammatical evolution
              is provided for tutorial examples.
+             For xega's architecture, 
+             see Geyer-Schulz, A. (2025) <doi:10.5445/IR/1000187255>.
              The methods in the package are described by the following
              references:
              Baker, James E. (1987, ISBN:978-08058-0158-8), 

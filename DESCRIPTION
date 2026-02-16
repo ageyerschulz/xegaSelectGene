@@ -29,7 +29,7 @@ Description: This collection of gene representation-independent
              for function optimization, combinatorial optimization, and
              grammar-based genetic programming and grammatical evolution
              is provided for tutorial examples.
-             For xega's architecture, 
+             For 'xega''s architecture, 
              see Geyer-Schulz, A. (2025) <doi:10.5445/IR/1000187255>.
              The methods in the package are described by the following
              references:

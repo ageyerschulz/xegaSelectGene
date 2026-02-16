@@ -9,7 +9,7 @@ Authors@R:
     comment = c(ORCID = "0009-0000-5237-3579"))
 Description: This collection of gene representation-independent 
              mechanisms for evolutionary and genetic algorithms
-             for the R-package xega <https://CRAN.R-project.org/package=xega> 
+             for the R-package 'xega' <https://CRAN.R-project.org/package=xega> 
              contains four groups of functions:
              First, functions for selecting a gene 
              in a population of genes according to its fitness value

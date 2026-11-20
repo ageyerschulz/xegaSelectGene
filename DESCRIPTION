@@ -53,7 +53,6 @@ License: MIT + file LICENSE
 URL: https://github.com/ageyerschulz/xegaSelectGene
 Encoding: UTF-8
 LazyData: false
-RoxygenNote: 7.3.3
 Suggests: testthat (>= 3.0.0)
 Collate:
    'evalGene.R'
@@ -66,3 +65,4 @@ Collate:
    'newXOR.R'
    'newTSP.R'
    'xegaSelectGene-package.R'
+Config/roxygen2/version: 8.0.0
